@@ -2,6 +2,7 @@
 import argparse
 import sys
 
+from CalcClassman import CalcClassman
 from CalcRating import CalcRating
 from TextDataReader import TextDataReader
 from XmlDataReader import XmlDataReader
@@ -27,6 +28,9 @@ def main():
     print("Students: ", students)
     rating = CalcRating(students).calc()
     print("Rating: ", rating)
+    classmans = CalcClassman(students).calc()
+    print("Classman (names, count of all classmans): ", classmans)
+
 
 if __name__ == "__main__":
     main()
