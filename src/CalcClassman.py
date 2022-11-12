@@ -3,6 +3,7 @@ from Types import DataType
 
 ClassmanType = dict[str, bool]
 
+
 class CalcClassman:
 
     def __init__(self, data: DataType) -> None:
@@ -16,9 +17,10 @@ class CalcClassman:
         for key in self.data:
             self.tmp_student_dict[key] = True
             for (subject_name, subject_score) in self.data[key]:
-                self.tmp_student_dict[key] = self.tmp_student_dict[key] and subject_score >= 76
+                self.tmp_student_dict[key] = \
+                    self.tmp_student_dict[key] and subject_score >= 76
 
-        # Результирующий словарь, оставляющий только студентов хорошистов (я не умею в лямбды на питоне)
+        # Результирующий словарь, оставляющий только студентов хорошистов
         for (key, value) in self.tmp_student_dict.items():
             if value:
                 self.res_names.append(key)

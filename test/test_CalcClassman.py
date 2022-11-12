@@ -3,13 +3,13 @@ from CalcClassman import CalcClassman
 from src.Types import DataType
 import pytest
 
-ClassmanResType = (list[str], int)
+ClassmanType = (list[str], int)
 
 
 class TestCalcClassman:
 
     @pytest.fixture()
-    def input_data(self) -> tuple[DataType, ClassmanResType]:
+    def input_data(self) -> tuple[DataType, ClassmanType]:
 
         data: DataType = {
             "Абрамов Петр Сергеевич":
@@ -29,19 +29,19 @@ class TestCalcClassman:
         }
 
         # Без split мой список будет не из строк, а из символов...
-        classman_output: ClassmanResType = (
+        classman_output: ClassmanType = (
             list("Абрамов Петр Сергеевич".split(sep="dummyseparator")), 1
         )
 
         return data, classman_output
 
     def test_init_calc_rating(self, input_data: tuple[DataType,
-                                                      ClassmanResType]) -> None:
+                                                      ClassmanType]) -> None:
 
         calc_classman = CalcClassman(input_data[0])
         assert input_data[0] == calc_classman.data
 
-    def test_calc(self, input_data: tuple[DataType, ClassmanResType]) -> None:
+    def test_calc(self, input_data: tuple[DataType, ClassmanType]) -> None:
 
         classman = CalcClassman(input_data[0]).calc()
         assert pytest.approx(classman) == input_data[1]
